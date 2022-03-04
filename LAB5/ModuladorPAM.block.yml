@@ -1,0 +1,44 @@
+id: ModuladorPAM
+label: ModuladorPAM
+category: '[Modulos_L1B_G6]'
+
+parameters:
+-   id: D
+    label: Ancho del pulso
+    dtype: int
+    default: '10'
+    hide: none
+-   id: Fs
+    label: Frecuencia al cuadrado
+    dtype: raw
+    default: '100000'
+    hide: none
+-   id: Samp_rate
+    label: Frecuencia de muestreo
+    dtype: raw
+    default: '10000000'
+    hide: none
+
+inputs:
+-   label: in
+    dtype: float
+    vlen: 1
+
+outputs:
+-   label: out
+    dtype: float
+    vlen: 1
+
+templates:
+    imports: 'from ModuladorPAM import ModuladorPAM  # grc-generated hier_block'
+    make: "ModuladorPAM(\n    D=${ D },\n    Fs=${ Fs },\n    Samp_rate=${ Samp_rate\
+        \ },\n)"
+    callbacks:
+    - set_D(${ D })
+    - set_Fs(${ Fs })
+    - set_Samp_rate(${ Samp_rate })
+
+documentation: "Jorge Pe\xF1a\n/home/labcom/Gr_ModulosL1B_G06/LAB5/ModuladorPAM.py"
+grc_source: /home/labcom/Gr_ModulosL1B_G06/LAB5/ModuladorPAM.grc
+
+file_format: 1
